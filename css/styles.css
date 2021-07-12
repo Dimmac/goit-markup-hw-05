@@ -20,8 +20,9 @@
   --card-gap: 30px;
   --line-color: rgba(236, 236, 236, 1);
   --icon-symbol-color: rgba(175, 177, 184, 1);
-  --time-transition-duration: 2500ms;
+  --time-transition-duration: 250ms;
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --tasks-text-background: rgba(47, 48, 58, 0.8);
 }
 /* COMPONENTS */
 .container {
@@ -74,14 +75,13 @@ ul {
 .menu {
   border-bottom: var(--line-color) solid 1px;
 }
-.menu .container,
-.nav-section {
+.menu .container {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 }
 .nav-section {
   padding-top: 24px;
-  padding-bottom: 25px;
+  /* padding-bottom: 25px; */
 }
 .logo {
   font-family: "Raleway";
@@ -94,6 +94,11 @@ ul {
 .header-studio {
   color: var(--logo-black-textcolor);
 }
+.site-nav {
+  display: inline-flex;
+  /* align-items: center; */
+  margin-left: 93px;
+}
 .nav-list-item:hover,
 .nav-list-item:focus {
   color: var(--theme-textcolor);
@@ -103,10 +108,18 @@ ul {
 .site-nav .nav-list-item.current {
   color: var(--theme-textcolor);
 }
-.site-nav {
+.nav-list-item.current::after {
+  display: block;
+  content: "";
+  width: 48px;
+  height: 4px;
+  margin: 0 auto;
+  margin-top: 28px;
+  background-color: #2196f3;
+}
+.nav-list-item.current .site-nav {
   display: flex;
   margin-left: 93px;
-  align-items: center;
 }
 .site-nav .item:not(:last-child) {
   margin-right: 50px;
@@ -114,20 +127,20 @@ ul {
 .contact-list {
   display: flex;
   margin-left: auto;
-  align-items: center;
+  /* align-items: center; */
 }
 .contact-list .item:not(:last-child) {
   margin-right: 50px;
 }
 .nav-list-item,
 .contact-list-item {
-  align-items: center;
+  /* align-items: center; */
   padding: 32px 0px;
 }
 .contact-list-item {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
@@ -257,6 +270,7 @@ ul {
   margin-left: calc(-1 * var(--card-gap));
 }
 .tasks-images-item {
+  position: relative;
   margin-left: var(--card-gap);
 }
 .tasks-images > .tasks-images-item {
@@ -264,6 +278,22 @@ ul {
 }
 .tasks-images-item .gap {
   display: block;
+}
+.tasks-text {
+  position: absolute;
+  width: 100%;
+  transform: translateY(-100%);
+  padding: 27px 27px;
+  background-color: var(--tasks-text-background);
+}
+.tasks-text-item {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--hover-textcolor);
 }
 /* ============ styles for command ============ */
 .command-section {
@@ -510,14 +540,14 @@ ul {
   background-color: var(--theme-textcolor);
   color: var(--hover-textcolor);
 }
-.thumb-list h3 {
+.thumb-text h3 {
   font-weight: 700;
   font-size: 18px;
   line-height: 2;
   letter-spacing: 0.06em;
   color: var(--title-textcolor);
 }
-.thumb-list p {
+.thumb-text p {
   margin-top: 4px;
   font-weight: 400;
   font-size: 16px;
@@ -537,7 +567,8 @@ ul {
   flex-basis: calc((100% / 3) - var(--card-gap));
 }
 .thumb-link {
-  display: inline-block;
+  display: block;
+  position: relative;
 }
 .thumb-link:hover,
 .thumb-link:focus {
@@ -554,4 +585,16 @@ ul {
   padding: 20px 24px;
   border: var(--line-color) solid 1px;
   border-top: 0;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 63px 24px;
+  background-color: rgba(33, 150, 243, 0.9);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  color: var(--hover-textcolor);
 }
