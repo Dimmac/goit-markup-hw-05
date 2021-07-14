@@ -8,6 +8,11 @@
 /* цвет фона секции "команда" */
 /* цвет текста с прозрачностью в футере rgba(255, 255, 255, 0.6)*/
 /* зазор между карточками в 30 пикселей "card-gap"*/
+/* цвет границы хедера и карточек портфолио --line-color: rgba(236, 236, 236, 1) */
+/* цвет символов иконок rgba(175, 177, 184, 1) */
+/* время перехода 250ms */
+/* функция перехода cubic-bezier(0.4, 0, 0.2, 1) */
+/* цвет фона под блоком текста в карточках tasks */
 :root {
   --logo-black-textcolor: #000000;
   --title-textcolor: #212121;
@@ -67,7 +72,6 @@ ul {
 }
 /* обнуление свойств изображений */
 .img {
-  display: block;
   max-width: 100%;
   height: auto;
 }
@@ -97,19 +101,34 @@ ul {
 .site-nav {
   margin-left: 93px;
 }
+.nav-list-item,
+.contact-list-item {
+  transition-property: color;
+  transition-duration: var(--time-transition-duration);
+  transition-timing-function: var(--timing-function);
+  font-weight: 500;
+  padding: 32px 0px;
+}
+.nav-list-item {
+  position: relative;
+  color: var(--title-textcolor);
+}
 .nav-list-item:hover,
 .nav-list-item:focus {
   color: var(--theme-textcolor);
 }
-.site-nav .nav-list-item.current {
+.contact-list-item {
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.02em;
+  color: var(--paragraph-textcolor);
+}
+.contact-list-item:hover,
+.contact-list-item:focus {
   color: var(--theme-textcolor);
 }
-.nav-list-item {
-  transition-duration: var(--time-transition-duration);
-  transition-timing-function: var(--timing-function);
-  position: relative;
-  font-weight: 500;
-  color: var(--title-textcolor);
+.site-nav .nav-list-item.current {
+  color: var(--theme-textcolor);
 }
 .nav-list-item.current::after {
   position: absolute;
@@ -121,9 +140,6 @@ ul {
   border-radius: 2px;
   background-color: #2196f3;
 }
-.nav-list-item.current .site-nav {
-  margin-left: 93px;
-}
 .site-nav .item:not(:last-child) {
   margin-right: 50px;
 }
@@ -132,23 +148,6 @@ ul {
 }
 .contact-list .item:not(:last-child) {
   margin-right: 50px;
-}
-.nav-list-item,
-.contact-list-item {
-  padding: 32px 0px;
-}
-.contact-list-item {
-  transition-duration: var(--time-transition-duration);
-  transition-timing-function: var(--timing-function);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.14;
-  letter-spacing: 0.02em;
-  color: var(--paragraph-textcolor);
-}
-.contact-list-item:hover,
-.contact-list-item:focus {
-  color: var(--theme-textcolor);
 }
 .icon-envelope {
   width: 16px;
@@ -191,6 +190,9 @@ ul {
   color: var(--hover-textcolor);
 }
 .modal-btn {
+  transition-property: background-color;
+  transition-duration: var(--time-transition-duration);
+  transition-timing-function: var(--timing-function);
   padding: 10px 32px;
   margin-top: var(--card-gap);
   border-radius: 4px;
@@ -251,7 +253,6 @@ ul {
   width: 270px;
   height: 120px;
   margin-bottom: 30px;
-  /* padding: 25px 100px; */
   background: var(--command-section-background-color);
   border-radius: 4px;
 }
@@ -347,6 +348,9 @@ ul {
   margin-top: 16px;
 }
 .social-list-link {
+  transition-property: background-color, fill;
+  transition-duration: var(--time-transition-duration);
+  transition-timing-function: var(--timing-function);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -356,16 +360,14 @@ ul {
   background-color: var(--card-gap);
   fill: var(--icon-symbol-color);
 }
-.icon-social-link {
-  transition-duration: var(--time-transition-duration);
-  transition-timing-function: var(--timing-function);
-  width: 20px;
-  height: 20px;
-}
 .social-list-link:hover,
 .social-list-link:focus {
   background-color: var(--theme-textcolor);
   fill: var(--hover-textcolor);
+}
+.icon-social-link {
+  width: 20px;
+  height: 20px;
 }
 /* ============ styles for CLIENTS ============ */
 .clients .container {
@@ -387,6 +389,7 @@ ul {
   margin-right: 30px;
 }
 .clients-list-link {
+  transition-property: fill, border-color;
   transition-duration: var(--time-transition-duration);
   transition-timing-function: var(--timing-function);
   display: flex;
@@ -427,6 +430,7 @@ ul {
   letter-spacing: 0.03em;
 }
 .geoposition {
+  transition-property: color;
   transition-duration: var(--time-transition-duration);
   transition-timing-function: var(--timing-function);
   color: var(--hover-textcolor);
@@ -436,6 +440,7 @@ ul {
   color: var(--theme-textcolor);
 }
 .address-link {
+  transition-property: color;
   transition-duration: var(--time-transition-duration);
   transition-timing-function: var(--timing-function);
   color: var(--footer-contacts-textcolor);
@@ -478,6 +483,7 @@ ul {
   margin-right: 10px;
 }
 .social-list-link-footer {
+  transition-property: background-color;
   transition-duration: var(--time-transition-duration);
   transition-timing-function: var(--timing-function);
   display: flex;
@@ -504,6 +510,7 @@ ul {
   margin-bottom: 50px;
 }
 .modal-btn-portfolio {
+  transition-property: color, background-color, box-shadow;
   transition-duration: var(--time-transition-duration);
   transition-timing-function: var(--timing-function);
   padding: 6px 22px;
@@ -516,18 +523,15 @@ ul {
   color: var(--title-textcolor);
   background-color: var(--command-section-background-color);
 }
-.site-nav .item:not(:last-child) {
-  margin-right: 50px;
-}
-.btn-portfolio > .btn-portfolio-item:not(:last-child) {
-  margin-right: 8px;
-}
 .modal-btn-portfolio:hover,
 .modal-btn-portfolio:focus {
   color: var(--hover-textcolor);
   background-color: var(--theme-textcolor);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
+}
+.btn-portfolio > .btn-portfolio-item:not(:last-child) {
+  margin-right: 8px;
 }
 .btn-portfolio .modal-btn-portfolio.current {
   background-color: var(--theme-textcolor);
@@ -561,6 +565,7 @@ ul {
 }
 .thumb-link {
   display: block;
+  transition-property: box-shadow;
   transition-duration: var(--time-transition-duration);
   transition-timing-function: var(--timing-function);
 }
@@ -597,6 +602,7 @@ ul {
   letter-spacing: 0.03em;
   color: var(--hover-textcolor);
 
+  transition-property: transform;
   transform: translateY(100%);
   transition: transform var(--time-transition-duration) linear;
 }
